@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}List of cards{% endblock %}
+
+<body>
+    {% block content %}
+        <table>
+            <tr>
+                <th> Name </th>
+                <th> Phone </th>
+                <th> Address </th>
+            </tr>
+        {% for card in object_list %}
+            <tr>
+                <td> {{card.name}} </td>
+                <td> {{card.phone}}</td>
+                <td> {{card.address}} </td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endblock %}
+</body>

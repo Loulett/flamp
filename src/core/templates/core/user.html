@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{user.username}} Page{% endblock %}
+<body>
+    {% block content %}
+        <table>
+            <tr>
+                <td>
+                    <b>Nickname: </b>
+                </td>
+                <td>
+                    {{user.username}}
+                </td>
+                <td>
+                   <img class="avatar" src=" {{user.avatar.url}} ">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b> Name: </b>
+                </td>
+                <td>
+                    {{user.first_name}} {{user.last_name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b> Email: </b>
+                </td>
+                <td>
+                    {{user.email}}
+                </td>
+            </tr>
+        </table>
+        {% if user.get_responses.all %}
+            <b> Your responses: </b>
+            {% for resp in user.get_responses.all %}
+                <p>{{resp.created_at}}</p>
+                <p>{{resp.rating}}</p>
+                <p>{{resp.text}}</p>
+            {% endfor %}
+        {% else %}
+            <b> You have no responses! </b>
+        {% endif %}
+
+        {% if user.get_comments.all %}
+            <b> Your comments: </b>
+            {% for comm in user.get_comments.all %}
+                <p>{{comm.created_at}}</p>
+                <p>{{comm.rating}}</p>
+                <p>{{comm.text}}</p>
+            {% endfor %}
+        {% else %}
+            <b> You have no comments! </b>
+        {% endif %}
+    {% endblock %}
+</body>

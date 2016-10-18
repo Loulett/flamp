@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{card.name}}{% endblock %}
+
+<body>
+    {% block content %}
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td>{{card.name}}</td>
+            </tr>
+            <tr>
+                <th>Phone: </th>
+                <td>{{card.phone}}</td>
+            </tr>
+            <tr>
+                <th>Website:</th>
+                <td>{{card.website}}</td>
+            </tr>
+            <tr>
+                <th> Address: </th>
+                <td>{{card.address}}</td>
+            </tr>
+        </table>
+        {% for resp in card.get_responses.all%}
+            <p>{{resp.author}} {{resp.created_at}}</p>
+            <p>{{resp.rating}}</p>
+            <p>{{resp.text}}</p>
+        {% endfor %}
+
+
+
+    {% endblock %}
+</body>

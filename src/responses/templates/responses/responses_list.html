@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}List of responses{% endblock %}
+
+<body>
+    {% block content %}
+        <table>
+            <tr>
+                <th> Card </th>
+                <th> Author </th>
+                <th> Time </th>
+                <th> Rating </th>
+            </tr>
+        {% for resp in object_list %}
+            <tr>
+                <td> {{resp.card.name}} </td>
+                <td> {{resp.author.username}}</td>
+                <td> {{resp.created_at}} </td>
+                <td> {{resp.rating}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endblock %}
+</body>

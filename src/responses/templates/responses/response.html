@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Comment {{response.id}}{% endblock %}
+
+<body>
+    {% block content %}
+        <table>
+            <tr>
+                <th>Card:</th>
+                <td>{{response.card.name}}</td>
+            </tr>
+            <tr>
+                <th>User: </th>
+                <td>{{response.author}}</td>
+                <td>{{response.created_at}}</td>
+            </tr>
+            <tr>
+                <th>Rating:</th>
+                <td>{{response.rating}}</td>
+            </tr>
+            <tr>
+                <th> Text: </th>
+                <td>{{response.text}}</td>
+            </tr>
+        </table>
+        <b>Comments:</b>
+        {% for comm in response.get_comments.all%}
+            <p>{{comm.author}} {{comm.created_at}}</p>
+            <p>{{comm.rating}}</p>
+            <p>{{comm.text}}</p>
+        {% endfor %}
+
+
+
+    {% endblock %}
+</body>
