@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import *
+from .views import CardList, CardView
 
 urlpatterns = [
     url(r'^$', CardList.as_view(), name='cards_list'),
